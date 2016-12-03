@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Learning Rails
 
 Learning Rails with a tutorial from[learn-rails.com](http://learn-rails.com/)
@@ -26,3 +27,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+=======
+# learn-rails
+Enjoying learning Ruby On Rails!
+>>>>>>> origin/master
