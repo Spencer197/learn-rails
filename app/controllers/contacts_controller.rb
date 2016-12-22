@@ -7,7 +7,7 @@ class ContactsController < ApplicationController
   def create#Define 'create' method.  Renders the app/views/contacts/new.html.erb view.
     @contact = Contact.new(secure_params)
     if @contact.valid?
-      # TODO send message
+      UserMailer.contact_email(@contact).deliver_now#I added this line to integrate the UserMailer feature with the ContactsController.
       flash[:notice] = "Message sent from #{@contact.name}."
       redirect_to root_path
     else
