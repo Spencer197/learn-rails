@@ -1,7 +1,24 @@
-class VisitorsController < ApplicationController#class VisitorsController inherits behaviour from the ApplicationController class in the Rails API.
+class VisitorsController < ApplicationController
 
-  def new#defines new method
-    @owner = Owner.new#Creates an instatance variable of @owner and assigns an instance of the Owner model.
+  def new
+    @visitor = Visitor.new
+  end
+
+  def create
+    @visitor = Visitor.new(secure_params)
+    if @visitor.valid?
+      @visitor.subscribe
+      flash[:notice] = "Signed up #{@visitor.email}."
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def secure_params
+    params.require(:visitor).permit(:email)
   end
 
 end
